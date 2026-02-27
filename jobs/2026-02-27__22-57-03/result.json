@@ -1,0 +1,29 @@
+{
+    "id": "cb84677f-d89c-4a36-9367-4f2e8b7ca14d",
+    "started_at": "2026-02-27T22:57:03.225330",
+    "finished_at": "2026-02-27T22:57:41.823203",
+    "n_total_trials": 1,
+    "stats": {
+        "n_trials": 1,
+        "n_errors": 0,
+        "evals": {
+            "oracle__tasks": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "microservices-challenge__MJcRdAy"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        }
+    }
+}

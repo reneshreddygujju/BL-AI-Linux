@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-processor
+  template:
+    metadata:
+      labels:
+        app: data-processor
+    spec:
+      containers:
+      - name: data-processor
+        image: data-processor:latest
+        ports:
+        # BUG: Wrong containerPort
+        - containerPort: 5002
+        env:
+        # BUG: Wrong PORT value
+        - name: PORT
+          value: "5002"
+        livenessProbe:
+          httpGet:
+            path: /health
+            # BUG: Wrong port in probe
+            port: 5002
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /ready
+            # BUG: Wrong port in probe
+            port: 5002
+          initialDelaySeconds: 5
+          periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-processor
+spec:
+  selector:
+    app: data-processor
+  ports:
+  - protocol: TCP
+    port: 5003
+    # BUG: Wrong targetPort
+    targetPort: 5002

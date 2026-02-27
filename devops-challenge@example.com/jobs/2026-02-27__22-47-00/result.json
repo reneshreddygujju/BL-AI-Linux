@@ -1,0 +1,27 @@
+{
+    "id": "ffd848fc-e5e6-4aa3-a24d-1b4c6cd4cf2f",
+    "started_at": "2026-02-27T22:47:00.111276",
+    "finished_at": "2026-02-27T22:47:00.695270",
+    "n_total_trials": 1,
+    "stats": {
+        "n_trials": 1,
+        "n_errors": 1,
+        "evals": {
+            "oracle__adhoc": {
+                "n_trials": 0,
+                "n_errors": 1,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "reward_stats": {},
+                "exception_stats": {
+                    "RuntimeError": [
+                        "devops-challenge@example.com__iut2DDB"
+                    ]
+                }
+            }
+        }
+    }
+}

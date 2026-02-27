@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  auth-service:
+    build:
+      context: ./services/auth-service
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+      # BUG: Wrong URL causing circular dependency
+      - API_GATEWAY_URL=http://api-gateway:5002
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    depends_on:
+      - api-gateway  # BUG: Circular dependency
+
+  api-gateway:
+    build:
+      context: ./services/api-gateway
+    ports:
+      - "5002:5002"
+    environment:
+      - PORT=5002
+      - AUTH_SERVICE_URL=http://auth-service:5001
+      - DATA_PROCESSOR_URL=http://data-processor:5003
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    depends_on:
+      - auth-service  # BUG: Circular dependency
+
+  data-processor:
+    build:
+      context: ./services/data-processor
+    ports:
+      # BUG: Wrong port mapping
+      - "5003:5002"
+    environment:
+      # BUG: Wrong PORT value
+      - PORT=5002
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
