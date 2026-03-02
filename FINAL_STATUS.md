@@ -71,7 +71,7 @@ cd /Users/heyanhrithvik/Documents/AI-Assesment/BL-AI-Linux
 export PATH="$HOME/.local/bin:/Applications/Docker.app/Contents/Resources/bin:$PATH"
 
 harbor run -p "./tasks" -a terminus-2 \
-  --model groq/moonshotai/kimi-k2-instruct-0905 -n 10
+  --model groq/moonshotai/kimi-k2-instruct-0905 -k 10
 ```
 
 This will:

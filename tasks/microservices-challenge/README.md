@@ -104,7 +104,7 @@ harbor run -p "./devops-challenge@example.com" -a oracle
 
 ### Test with AI Agent
 ```bash
-harbor run -p "./devops-challenge@example.com" -a terminus-2 --model groq/moonshotai/kimi-k2-instruct-0905 -n 10
+harbor run -p "./devops-challenge@example.com" -a terminus-2 --model groq/moonshotai/kimi-k2-instruct-0905 -k 10
 ```
 
 ## Notes

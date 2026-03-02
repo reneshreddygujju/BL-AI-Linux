@@ -104,7 +104,7 @@ This should PASS all tests, confirming your solution works.
 ### 4. Test with AI Agent (10 runs)
 ```bash
 harbor run -p "./devops-challenge@example.com" -a terminus-2 \
-  --model groq/moonshotai/kimi-k2-instruct-0905 -n 10
+  --model groq/moonshotai/kimi-k2-instruct-0905 -k 10
 ```
 
 This will run the task 10 times and give you a success rate report.
